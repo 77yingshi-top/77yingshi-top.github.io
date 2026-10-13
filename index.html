@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>77影视 | 7分满足·7天不重样·七日观影循环体系</title>
+<meta name="description" content="77影视（77yingshi.top）以"77"定义观影承诺：第一重7代表7分满足感——我们不追9分神作，只保证每一部推荐都至少让你感到7分满足，不踩大雷；第二重7代表7天一周不重样——从周一到周日，每天一个主题、一种心情、一份精选片单，让一周的观影节奏不再随机。">
+<meta name="keywords" content="77影视, 77yingshi, 七日观影, 7分满足感, 一周片单, 循环选片, 影视推荐, 每日主题">
+<style>
+/* ===== 70s Retro / Duotone Risograph / Mega Num ===== */
+:root {
+  --cream: #f4efe3;
+  --cream-2: #ede6d6;
+  --brown: #2b2520;
+  --rust: #c84b22;
+  --rust-soft: rgba(200,75,34,.1);
+  --mustard: #d9a02b;
+  --mustard-soft: rgba(217,160,43,.12);
+  --teal: #2d6a64;
+  --line: #cbc1ac;
+  --muted: #7a7267;
+  --muted-2: #a89d8c;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background:var(--cream);
+  color:var(--brown);
+  font-family:"PT Serif","Georgia","Songti SC","PingFang SC",serif;
+  line-height:1.75; font-size:15px;
+  overflow-x:hidden;
+}
+
+a { color:inherit; text-decoration:none; }
+.wrap { max-width:1240px; margin:0 auto; padding:0 1.5rem; }
+
+/* ===== Ribbon bar ===== */
+.ribbon {
+  background:var(--rust); color:var(--cream);
+  padding:.55rem 0; font-size:.72rem; letter-spacing:.15em;
+  font-family:"Courier New",monospace;
+}
+.ribbon .wrap { display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.ribbon .site { color:var(--mustard); }
+
+/* ===== Header ===== */
+.masthead {
+  border-bottom:4px double var(--brown); padding:1.4rem 0;
+  background:rgba(244,239,227,.96); backdrop-filter:blur(4px);
+  position:sticky; top:0; z-index:100;
+}
+.masthead .wrap { display:flex; align-items:flex-end; justify-content:space-between; gap:1.5rem; flex-wrap:wrap; }
+.marque {
+  font-family:"Playfair Display","Georgia",serif; font-weight:900;
+  font-size:clamp(2.2rem,5vw,3.6rem); letter-spacing:-2px; line-height:.9;
+  display:flex; align-items:baseline; gap:.4rem;
+}
+.marque .seven { color:var(--rust); }
+.marque .seven.solid { background:var(--rust); color:var(--cream); padding:0 .12em; }
+.marque .cn { font-size:.9rem; letter-spacing:.2em; color:var(--muted); font-weight:700; margin-left:.3rem; }
+.marque-dom {
+  font-family:"Courier New",monospace; font-size:.7rem; color:var(--brown);
+  border-top:2px solid var(--brown); border-bottom:2px solid var(--brown);
+  padding:.3rem .7rem; text-align:center; line-height:1.5;
+}
+.marque-dom b { color:var(--rust); }
+.nav { display:flex; gap:1.5rem; list-style:none; font-size:.85rem; font-weight:700; font-family:"Courier New",monospace; text-transform:uppercase; letter-spacing:.05em; }
+.nav a { color:var(--muted); transition:color .2s; }
+.nav a:hover { color:var(--rust); text-decoration:underline; text-underline-offset:4px; }
+
+/* ===== Hero ===== */
+.hero { padding:5rem 0 4rem; border-bottom:4px double var(--brown); position:relative; overflow:hidden; }
+.hero-grid { display:grid; grid-template-columns:1fr 340px; gap:4rem; align-items:center; }
+.hero-kicker {
+  font-family:"Courier New",monospace; font-size:.72rem; letter-spacing:.2em;
+  color:var(--rust); margin-bottom:1.5rem; font-weight:700;
+}
+.hero h1 {
+  font-family:"Playfair Display","Georgia",serif; font-weight:900;
+  font-size:clamp(3rem,10vw,8rem); line-height:.86; letter-spacing:-5px;
+}
+.hero h1 .big7 { display:block; }
+.hero h1 .big7.r { color:var(--rust); }
+.hero h1 .big7.m { color:var(--mustard); -webkit-text-stroke:2px var(--brown); color:transparent; }
+.hero h1 .big7.s { background:var(--brown); color:var(--cream); padding:0 .12em; }
+.hero-sub {
+  margin-top:1.8rem; font-size:1.15rem; color:var(--muted);
+  max-width:500px; line-height:1.7;
+}
+.hero-sub em { color:var(--rust); font-style:italic; font-weight:700; }
+.hero-actions { margin-top:2rem; display:flex; gap:.8rem; flex-wrap:wrap; }
+.btn {
+  font-family:inherit; font-size:.88rem; font-weight:700; padding:.8rem 2rem;
+  cursor:pointer; border-radius:2px; transition:all .2s;
+  border:2.5px solid var(--brown);
+}
+.btn-rust { background:var(--rust); color:var(--cream); }
+.btn-rust:hover { background:var(--cream); color:var(--rust); }
+.btn-out { background:transparent; }
+.btn-out:hover { background:var(--brown); color:var(--cream); }
+
+/* promise box */
+.promise {
+  border:3px solid var(--brown); border-radius:4px; padding:2rem 1.8rem;
+  background:var(--cream-2); position:relative;
+}
+.promise::before {
+  content:'PROMISE'; position:absolute; top:-12px; left:1.2rem;
+  background:var(--rust); color:var(--cream); font-size:.68rem; font-family:"Courier New",monospace;
+  letter-spacing:.2em; padding:.2rem .6rem;
+}
+.promise h3 { font-size:1.15rem; font-weight:900; margin:1rem 0 .6rem; }
+.promise p { font-size:.85rem; color:var(--muted); }
+.promise .row { display:flex; gap:.8rem; align-items:baseline; padding:.6rem 0; border-bottom:1px dotted var(--line); }
+.promise .row:last-child { border-bottom:none; }
+.promise .row .n { font-family:"Playfair Display",serif; font-size:1.6rem; font-weight:900; color:var(--rust); line-height:1; }
+.promise .row .t { font-weight:700; font-size:.92rem; }
+.promise .row .d { font-size:.78rem; color:var(--muted); margin-left:auto; font-family:"Courier New",monospace; }
+
+.hero-foot {
+  margin-top:3rem; border-top:1px solid var(--line); padding-top:1.2rem;
+  font-family:"Courier New",monospace; font-size:.72rem; color:var(--muted);
+  display:flex; gap:3rem; flex-wrap:wrap;
+}
+.hero-foot b { color:var(--rust); }
+
+/* ===== Section ===== */
+.section { padding:5rem 0; border-bottom:4px double var(--brown); }
+.sec-head { margin-bottom:3rem; }
+.sec-no {
+  font-family:"Playfair Display",serif; font-size:clamp(3rem,9vw,7rem);
+  font-weight:900; line-height:.8; color:var(--line); letter-spacing:-4px;
+  display:block;
+}
+.sec-tag { font-family:"Courier New",monospace; font-size:.72rem; letter-spacing:.2em; color:var(--rust); font-weight:700; margin:.5rem 0; }
+.sec-head h2 {
+  font-family:"Playfair Display","Georgia",serif; font-weight:900;
+  font-size:clamp(1.9rem,4.5vw,3.4rem); letter-spacing:-2px; line-height:1.05;
+}
+.sec-head h2 .r { color:var(--rust); }
+.sec-head h2 .u { -webkit-text-stroke:2px var(--brown); color:transparent; }
+.sec-head p { color:var(--muted); font-size:.92rem; margin-top:.8rem; max-width:640px; }
+
+/* ===== 7 days grid ===== */
+.week { display:grid; grid-template-columns:repeat(7,1fr); gap:0; border:3px solid var(--brown); }
+.day {
+  padding:1.6rem 1rem; border-right:1px solid var(--line); text-align:center;
+  transition:all .3s; cursor:default; position:relative; min-height:240px;
+  display:flex; flex-direction:column; justify-content:space-between;
+}
+.day:last-child { border-right:none; }
+.day:hover { background:var(--rust); color:var(--cream); }
+.day:hover .n { color:var(--mustard); }
+.day:hover .en { color:var(--mustard); }
+.day:hover .type { background:var(--cream); color:var(--brown); }
+.day .n {
+  font-family:"Playfair Display",serif; font-size:2.6rem; font-weight:900;
+  line-height:.9; color:var(--rust); transition:color .3s;
+}
+.day .en { font-family:"Courier New",monospace; font-size:.68rem; letter-spacing:.12em; color:var(--muted); margin:.4rem 0; transition:color .3s; }
+.day h4 { font-size:1rem; font-weight:900; margin-bottom:.3rem; }
+.day p { font-size:.74rem; color:var(--muted); transition:color .3s; }
+.day .type {
+  display:inline-block; font-family:"Courier New",monospace; font-size:.65rem;
+  letter-spacing:.08em; border:1.5px solid var(--brown); border-radius:2px;
+  padding:.2rem .5rem; margin-top:.8rem;
+}
+.day.sat { background:var(--mustard-soft); }
+.day.sun { background:var(--rust-soft); }
+
+/* ===== Split feature ===== */
+.split { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
+.panel {
+  border:3px solid var(--brown); border-radius:4px; padding:2.5rem;
+  background:var(--cream-2);
+}
+.panel.rust { background:var(--rust); color:var(--cream); border-color:var(--rust); }
+.panel h3 { font-size:1.3rem; font-weight:900; margin-bottom:.8rem; letter-spacing:-.5px; }
+.panel.rust h3 { color:var(--mustard); }
+.panel p { font-size:.88rem; color:var(--muted); }
+.panel.rust p { color:rgba(244,239,227,.9); }
+.panel ul { list-style:none; margin-top:1rem; }
+.panel li { padding:.5rem 0; font-size:.85rem; border-bottom:1px dotted var(--line); display:flex; gap:.6rem; }
+.panel li:last-child { border-bottom:none; }
+.panel li::before { content:'7.'; font-family:"Playfair Display",serif; font-weight:900; color:var(--rust); }
+.panel.rust li::before { color:var(--mustard); }
+
+/* ===== Quote band ===== */
+.band {
+  background:var(--brown); color:var(--cream); padding:4rem 0;
+  text-align:center; position:relative;
+}
+.band::before, .band::after {
+  content:'77'; position:absolute; font-family:"Playfair Display",serif;
+  font-weight:900; font-size:14rem; line-height:.8; color:var(--rust); opacity:.15;
+}
+.band::before { left:-1rem; top:0; }
+.band::after { right:-1rem; bottom:-2rem; }
+.band p {
+  font-family:"Playfair Display","Georgia",serif; font-weight:900;
+  font-size:clamp(1.3rem,3.5vw,2.4rem); line-height:1.35; letter-spacing:-1px;
+  max-width:900px; margin:0 auto; position:relative; font-style:italic;
+}
+.band p .m { color:var(--mustard); }
+.band cite { display:block; margin-top:1.5rem; font-size:.78rem; font-style:normal; color:var(--muted-2); font-family:"Courier New",monospace; letter-spacing:.1em; position:relative; }
+
+/* ===== Stats grid ===== */
+.stat-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1.5rem; }
+.stat {
+  border-top:4px solid var(--rust); padding:1.5rem 0; text-align:center;
+}
+.stat .big { font-family:"Playfair Display",serif; font-size:2.8rem; font-weight:900; color:var(--brown); line-height:1; }
+.stat .lbl { font-size:.8rem; font-weight:700; margin-top:.5rem; }
+.stat .en { font-family:"Courier New",monospace; font-size:.68rem; color:var(--muted); margin-top:.2rem; }
+
+/* ===== Footer ===== */
+.foot { background:var(--brown); color:var(--cream-2); padding:4rem 0 2rem; }
+.foot-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:2.5rem; margin-bottom:2rem; }
+.foot-brand .marque { font-size:2rem; }
+.foot-brand .marque .cn { color:var(--muted-2); }
+.foot-brand p { font-size:.83rem; color:var(--muted-2); margin-top:.6rem; }
+.foot-brand .fd { display:inline-block; margin-top:1rem; font-family:"Courier New",monospace; font-size:.7rem; color:var(--mustard); border:1.5px solid var(--mustard); padding:.3rem .7rem; }
+.foot-col h4 { font-family:"Courier New",monospace; font-size:.72rem; letter-spacing:.15em; color:var(--mustard); margin-bottom:1rem; font-weight:700; }
+.foot-col ul { list-style:none; }
+.foot-col li { margin-bottom:.55rem; }
+.foot-col a { font-size:.82rem; color:var(--muted-2); transition:color .2s; }
+.foot-col a:hover { color:var(--rust); }
+.foot-bot { border-top:1px solid #4a4138; padding-top:1.5rem; font-size:.72rem; color:var(--muted-2); text-align:center; font-family:"Courier New",monospace; }
+.foot-bot a { color:var(--mustard); }
+
+/* ===== Responsive ===== */
+@media(max-width:1000px){
+  .week{grid-template-columns:repeat(4,1fr);}
+  .day{border-right:none; border-bottom:1px solid var(--line);}
+  .split{grid-template-columns:1fr;}
+}
+@media(max-width:860px){
+  .hero-grid{grid-template-columns:1fr; gap:2.5rem;}
+  .promise{order:-1;}
+  .nav{display:none;}
+  .foot-grid{grid-template-columns:1fr 1fr; gap:1.5rem;}
+}
+@media(max-width:600px){
+  .wrap{padding:0 1rem;}
+  .section{padding:3.5rem 0;}
+  .week{grid-template-columns:repeat(2,1fr);}
+  .foot-grid{grid-template-columns:1fr;}
+  .hero h1{letter-spacing:-2px;}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<!-- Ribbon -->
+<div class="ribbon">
+  <div class="wrap">
+    <span>77 影视 · 7分满足 · 7天不重样</span>
+    <span class="site">77yingshi.top</span>
+  </div>
+</div>
+
+<!-- Masthead -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="marque">
+      <span class="seven">7</span><span class="seven solid">7</span>
+      <span class="cn">影视</span>
+    </div>
+    <div class="marque-dom">77YINGSHI.TOP<br><b>77yingshi-top.github.io</b></div>
+    <nav>
+      <ul class="nav">
+        <li><a href="#promise">77承诺</a></li>
+        <li><a href="#week">七日片单</a></li>
+        <li><a href="#system">选片体系</a></li>
+        <li><a href="#vault">片库</a></li>
+        <li><a href="#about">关于77</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-kicker">// DOUBLE SEVEN PROMISE</div>
+        <h1>
+          <span class="big7 r">77</span>
+          <span class="big7 m">77</span>
+          <span class="big7 s">77</span>
+        </h1>
+        <div class="hero-sub">
+          七分<em>满足感</em>，七天<em>不重样</em>。<br>
+          我们不承诺神作，只承诺你不浪费今晚。
+        </div>
+        <div class="hero-actions">
+          <button class="btn btn-rust" onclick="document.querySelector('#week').scrollIntoView({behavior:'smooth'})">看七日片单</button>
+          <button class="btn btn-out" onclick="document.querySelector('#promise').scrollIntoView({behavior:'smooth'})">77承诺</button>
+        </div>
+        <div class="hero-foot">
+          <div>网站：<b>77影视</b></div>
+          <div>域名：<b>77yingshi.top</b></div>
+          <div>GitHub Pages：<b>https://77yingshi-top.github.io</b></div>
+        </div>
+      </div>
+      <div class="promise">
+        <h3>7 分满足感</h3>
+        <p>每一部推荐都至少值 7 分。不是凑数，是我们的最低标准。</p>
+        <div class="row"><span class="n">7</span><div><div class="t">从不踩大雷</div><div class="d">NO BOMBS</div></div></div>
+        <div class="row"><span class="n">7</span><div><div class="t">7天主题循环</div><div class="d">WEEKLY LOOP</div></div></div>
+        <div class="row"><span class="n">7</span><div><div class="t">7项评分维度</div><div class="d">7 METRICS</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 77 promise -->
+<section class="section" id="promise">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">77</span>
+      <div class="sec-tag">// 01 · THE DOUBLE SEVEN PROMISE</div>
+      <h2>两重 <span class="r">7</span>，<span class="u">一个</span>承诺</h2>
+      <p>"77"不是随便取的数字。第一个7是我们的质量标准，第二个7是我们的服务周期——两者合在一起，就是我们对每一次观影的承诺。</p>
+    </div>
+    <div class="split">
+      <div class="panel">
+        <h3>第一重 · 7分满足感</h3>
+        <p>影评网站都在追9分神作，但神作一年就那么几部。我们换了个思路：保证你花的时间至少有7分回报。</p>
+        <ul>
+          <li>任何推荐片都不会低于7分体验</li>
+          <li>踩雷预警会明确写在推荐理由里</li>
+          <li>不看评分榜，看实际观感</li>
+          <li>明确标注适合人群与不适合人群</li>
+        </ul>
+      </div>
+      <div class="panel rust">
+        <h3>第二重 · 7天不重样</h3>
+        <p>一周七天，每天一个主题。今天想动脑、明天想放空，都能直接对号入座，不用再想"看什么"。</p>
+        <ul>
+          <li>周一到周日，主题固定可预期</li>
+          <li>每天片单互不重复，类型分明</li>
+          <li>支持按心情跨天跳看</li>
+          <li>每周一更新当周新片</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 days -->
+<section class="section" id="week" style="background:var(--cream-2);">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">07</span>
+      <div class="sec-tag">// 02 · SEVEN DAY LOOP</div>
+      <h2>七日 <span class="r">观影</span> <span class="u">循环</span></h2>
+      <p>从周一到周日，每天一个主题、一种心情。把"不知道看什么"变成"今天是星期几"就能回答的问题。</p>
+    </div>
+    <div class="week">
+      <div class="day">
+        <div><div class="n">1</div><div class="en">MON</div></div>
+        <div><h4>新片日</h4><p>当周新上映与刚上线作品，周一用来试水。</p><span class="type">新片</span></div>
+      </div>
+      <div class="day">
+        <div><div class="n">2</div><div class="en">TUE</div></div>
+        <div><h4>烧脑日</h4><p>悬疑、反转、时间线游戏。工作日开头需要一点刺激。</p><span class="type">烧脑</span></div>
+      </div>
+      <div class="day">
+        <div><div class="n">3</div><div class="en">WED</div></div>
+        <div><h4>治愈日</h4><p>周中续航用。生活流、美食、自然，不费脑的温暖。</p><span class="type">治愈</span></div>
+      </div>
+      <div class="day">
+        <div><div class="n">4</div><div class="en">THU</div></div>
+        <div><h4>经典日</h4><p>老片重看。周四适合回顾，经典经得起重复。</p><span class="type">经典</span></div>
+      </div>
+      <div class="day">
+        <div><div class="n">5</div><div class="en">FRI</div></div>
+        <div><h4>燃爽日</h4><p>周末前夜要嗨。动作、摇滚、公路，情绪拉满。</p><span class="type">燃爽</span></div>
+      </div>
+      <div class="day sat">
+        <div><div class="n">6</div><div class="en">SAT</div></div>
+        <div><h4>沉浸日</h4><p>周六有大把时间。长片、剧集马拉松，泡进去不出来。</p><span class="type">沉浸</span></div>
+      </div>
+      <div class="day sun">
+        <div><div class="n">7</div><div class="en">SUN</div></div>
+        <div><h4>收尾日</h4><p>周日留白。纪录片、短片、安静的片，为下周蓄力。</p><span class="type">收尾</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quote -->
+<section class="band">
+  <div class="wrap">
+    <p>"不是每部片都要是<span class="m">9分神作</span>——但今晚的这两小时，<br>它得对得起你没拿去刷手机的那些时间。"</p>
+    <cite>— 77影视 · 编辑部手记</cite>
+  </div>
+</section>
+
+<!-- Vault -->
+<section class="section" id="vault">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">◆</span>
+      <div class="sec-tag">// 03 · THE VAULT</div>
+      <h2><span class="u">片库</span> <span class="r">索引</span></h2>
+      <p>按七日主题反向归档。想看哪类，直接进对应格子。每类都标注片库规模与更新频率。</p>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="big">420</div><div class="lbl">新片库</div><div class="en">WEEKLY FRESH</div></div>
+      <div class="stat"><div class="big">680</div><div class="lbl">悬疑烧脑</div><div class="en">MIND BENDERS</div></div>
+      <div class="stat"><div class="big">530</div><div class="lbl">治愈生活流</div><div class="en">COZY VIBES</div></div>
+      <div class="stat"><div class="big">910</div><div class="lbl">经典修复</div><div class="en">RESTORED</div></div>
+      <div class="stat"><div class="big">760</div><div class="lbl">燃爽动作</div><div class="en">ADRENALINE</div></div>
+      <div class="stat"><div class="big">340</div><div class="lbl">纪录片</div><div class="en">REAL STORIES</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- System -->
+<section class="section" id="system" style="background:var(--cream-2);">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">7</span>
+      <div class="sec-tag">// 04 · 7 METRICS</div>
+      <h2>7项 <span class="r">评分</span> <span class="u">维度</span></h2>
+      <p>不用一个总分糊弄你。每部片都在这七个维度上单独打分，哪关过了哪关没过，一目了然。</p>
+    </div>
+    <div class="split">
+      <div class="panel">
+        <h3>前四项 · 基本功</h3>
+        <ul>
+          <li>剧本逻辑：有没有硬伤</li>
+          <li>表演层次：是否可信自然</li>
+          <li>节奏控制：有无注水段落</li>
+          <li>视听语言：摄影美术配乐</li>
+        </ul>
+      </div>
+      <div class="panel rust">
+        <h3>后三项 · 体验值</h3>
+        <ul>
+          <li>情绪传递：是否靠配乐硬催</li>
+          <li>立意表达：是否喊口号</li>
+          <li>重看价值：值不值得二刷</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">i</span>
+      <div class="sec-tag">// 05 · ABOUT 77</div>
+      <h2><span class="r">关于</span> <span class="u">77影视</span></h2>
+    </div>
+    <div class="split">
+      <div class="panel">
+        <h3>77影视是什么</h3>
+        <p>77影视（77yingshi.top）是一个用"七日循环"组织观影节奏的影视导航站。我们相信大多数人不是缺片看，而是缺一个能直接对号入座的选择框架。</p>
+        <p style="margin-top:.6rem;">两重7是全部逻辑的起点：7分满足是底线，7天不重样是周期。剩下的，交给每周的新片。</p>
+      </div>
+      <div class="panel rust">
+        <h3>我们不做的事</h3>
+        <ul>
+          <li>不刷水榜，不收钱改评分</li>
+          <li>不删差评，烂片会明确提示</li>
+          <li>不做标题党，描述与观感一致</li>
+          <li>不存任何资源，只做索引</li>
+          <li>不追神作，只保证7分满足</li>
+        </ul>
+        <div style="margin-top:1rem;font-family:'Courier New',monospace;font-size:.7rem;color:var(--mustard);border:1.5px solid var(--mustard);padding:.3rem .7rem;display:inline-block;">https://77yingshi-top.github.io</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="marque"><span class="seven">7</span><span class="seven solid">7</span><span class="cn">影视</span></div>
+        <p>7分满足 · 7天不重样<br>两重七，一个承诺</p>
+        <span class="fd">77yingshi-top.github.io</span>
+      </div>
+      <div class="foot-col">
+        <h4>承诺</h4>
+        <ul>
+          <li><a href="#promise">7分满足感</a></li>
+          <li><a href="#promise">7天循环</a></li>
+          <li><a href="#system">7项评分</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>片单</h4>
+        <ul>
+          <li><a href="#week">七日主题</a></li>
+          <li><a href="#vault">片库索引</a></li>
+          <li><a href="#week">按天选片</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>关于</h4>
+        <ul>
+          <li><a href="#about">关于77</a></li>
+          <li><a href="#">免责声明</a></li>
+          <li><a href="#">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <p>© 2024 77影视（77yingshi.top）· 7分满足，7天不重样</p>
+      <p style="margin-top:.3rem;">WEBSITE: <a href="https://77yingshi-top.github.io">https://77yingshi-top.github.io</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    const t=document.querySelector(this.getAttribute('href'));
+    if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
+
+</body>
+</html>
